@@ -53,11 +53,10 @@ export const milestones: Milestone[] = [
     tagline: 'PYQs & question banks',
     window: 'Weeks 12-14',
     blurb:
-      'Convert knowledge into speed. Work previous-year questions topic-by-topic and drill the question banks; start an error log.',
+      'Practise topic by topic with the available question banks and previous-year guides; keep your own record of topics to revisit.',
     bullets: [
       'Topic-wise PYQ guides (DA & CS)',
-      '120+ original question-bank items with keys',
-      'Error log → turn mistakes into marks',
+      'Use the DA and CS question-bank documents; verify counts and answer material in each file',
     ],
     icon: 'ListChecks',
     accent: '#22d3ee',
@@ -69,11 +68,11 @@ export const milestones: Milestone[] = [
     tagline: 'Full-length mocks',
     window: 'Weeks 15-16',
     blurb:
-      'Train stamina and timing with full 65-question, 100-mark, 3-hour mocks for both papers - then analyse ruthlessly.',
+      'Use the available mock documents for timed practice. Check the current official brochure before applying exam timing or marking rules.',
     bullets: [
-      'DA mocks ×2 · CS mocks ×2 (with solutions)',
+      'Review DA and CS mock documents; verify the format and answer material in each file',
       'Mixed revision tests on shared topics',
-      'Exam-day strategy & negative-marking tactics',
+      'Exam-day strategy based on the current official marking rules',
     ],
     icon: 'Gauge',
     accent: '#34d399',
@@ -83,24 +82,17 @@ export const milestones: Milestone[] = [
     key: 'revision',
     title: 'Final Revision',
     tagline: 'Peak and perform',
-    window: 'Feb 2027',
+    window: 'Final weeks',
     blurb:
       'Cycle the formula book and last-minute notes, keep light timed sets, and walk in calm, fast and confident.',
     bullets: [
       'Formula Book · Last-Minute Notes',
       'Spaced revision of weak areas',
-      'Exam: 6-21 February 2027',
+      'Check the official site for current exam dates and announcements',
     ],
     icon: 'Trophy',
     accent: '#f59e0b',
   },
-];
-
-export const stats = [
-  { label: 'Study documents', value: '33' },
-  { label: 'Pages of material', value: '530+' },
-  { label: 'Practice questions', value: '400+' },
-  { label: 'Subjects covered', value: '20' },
 ];
 
 // Which resource groups each roadmap phase points at (exact group strings

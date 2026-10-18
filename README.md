@@ -6,16 +6,19 @@ with a built-in **Resources & Papers** library. The signature feature is a windi
 animate into view. The Resources tab serves the full study library (33 documents) as downloads -
 from **Amazon S3** when configured, or from bundled static files out of the box.
 
-Built with **Next.js 14 (App Router) + TypeScript + Tailwind CSS + Framer Motion**. Deploys to
-**Vercel** or **Netlify** with zero config.
+Built with **Next.js 14 (App Router) + TypeScript + Tailwind CSS + Framer Motion**. It can be
+deployed to Vercel or compatible Next.js hosting; configure the production origin and owner contact
+details as needed.
 
 ### Features
 - **Animated winding roadmap** — the road draws on scroll, a marker travels along it, milestone cards reveal.
 - **Dark mode** — sun/moon toggle in the navbar; choice is saved (localStorage) and respects the OS preference on first visit. No flash on load. Deep-link a theme with `?theme=dark` or `?theme=light`.
 - **Progress tracker** — tick off the 5 roadmap phases (nodes turn into ✓, with a progress bar) and mark any of the 33 resources as completed (per-group counts + an overall progress bar). All saved locally per device; a reset button clears it.
-- **Per-document preview** — click any resource (or its “Preview” button) for a modal with details, “what’s inside”, Download, mark-complete, and an “Open preview” that renders the doc in the Microsoft Office viewer (new tab, uses the public URL). Deep-link a preview with `?doc=<id>`.
+- **Per-document preview** — click any resource (or its “Preview” button) for a modal with details, a rendered DOCX preview, Download, mark-complete, and an optional Office Online preview. Deep-link a preview with `?doc=<id>`.
 - **Actionable roadmap** — every milestone has an “Explore materials →” link that jumps to that phase’s documents on the Resources page.
 - **Resources browser** — search + filter (DA / CS / Both), grouped by subject, downloads via S3 presigned URLs or static fallback.
+
+Question counts, page totals, answer keys, and exhaustive syllabus coverage have not been independently verified. Mock tests are downloadable documents, not interactive online exams. Progress is stored in this browser only. See `RESOURCE_AUDIT.md`, `GATE_SYLLABUS_AUDIT.md`, and `PRE_LAUNCH_CHECKLIST.md` before public promotion.
 
 ---
 
@@ -48,7 +51,8 @@ npm start
   1. returns a short-lived **presigned S3 URL** if S3 env vars are set, else
   2. redirects to the bundled static file in `public/resources/`.
 
-So the site is fully functional immediately, and upgrades to S3 the moment you add credentials.
+The bundled files allow downloads without S3. Contact delivery, canonical-domain settings, and any
+optional S3 storage still need owner configuration.
 
 ---
 

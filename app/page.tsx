@@ -15,25 +15,25 @@ const features = [
   {
     icon: ClipboardList,
     title: 'Plan',
-    body: 'Capture the whole syllabus, set milestones, and organise every subject into a sequence that respects prerequisites.',
+    body: 'Use the available topic outline, set milestones, and organise subjects into a sequence that respects prerequisites.',
     color: '#6457f6',
   },
   {
     icon: Crosshair,
     title: 'Focus',
-    body: 'Prioritise what matters and study the shared core once - it powers both the DA and CS papers at the same time.',
+    body: 'Use the mapped common foundations alongside distinct DA and CS paper-specific materials.',
     color: '#a855f7',
   },
   {
     icon: BarChart3,
     title: 'Achieve',
-    body: 'Track progress with question banks, full-length mocks and an error log that turns mistakes into marks.',
+    body: 'Track your study progress and practise with downloadable question banks and mock documents.',
     color: '#22d3ee',
   },
   {
     icon: ShieldCheck,
-    title: 'Verified',
-    body: 'Every topic is mapped to the official GATE 2027 (IIT Madras) syllabus - nothing added, dropped, or faked.',
+    title: 'Transparent',
+    body: 'Syllabus links point to official IIT Madras sources. Coverage maps show which topics have notes or practice — not every official sub-topic is guaranteed.',
     color: '#34d399',
   },
 ];
@@ -92,18 +92,18 @@ export default function Home() {
                 <FolderDown className="h-3.5 w-3.5" /> {resources.length} documents · free
               </span>
               <h2 className="mt-5 text-3xl font-extrabold leading-tight sm:text-4xl">
-                The entire study library, ready to download.
+                Study materials in one searchable library.
               </h2>
               <p className="mt-4 max-w-lg text-white/70">
-                Textbook-quality notes, formula books, question banks, PYQ guides and full-length
-                mocks - grouped by subject and searchable. Served securely from cloud storage.
+                Downloadable notes, formula references, question banks, previous-year guides and
+                mock documents, grouped by subject and searchable.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link href="/resources" className="btn bg-white text-ink hover:bg-white/90">
                   Browse resources <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="/#roadmap"
+                  href="/study-roadmap"
                   className="btn border border-white/25 text-white hover:bg-white/10"
                 >
                   See the roadmap

@@ -33,7 +33,7 @@ export function RoadMap() {
   const [nodes, setNodes] = useState<Pt[]>([]);
   const [forceReveal, setForceReveal] = useState(false);
   const { theme } = useTheme();
-  const { ready, has, toggle } = useChecklist('vekta.phases');
+  const { ready, has, toggle, storageError } = useChecklist('vekta.phases');
 
   const road =
     theme === 'dark'
@@ -81,12 +81,12 @@ export function RoadMap() {
   const phasePct = Math.round((phaseCount / milestones.length) * 100);
 
   return (
-    <section id="roadmap" ref={sectionRef} className="relative py-20 sm:py-28">
+    <section id="roadmap" ref={sectionRef} className="relative overflow-x-clip py-20 sm:py-28">
       <div className="container-x">
         <header className="mx-auto mb-8 max-w-2xl text-center">
           <span className="chip mx-auto">The journey</span>
           <h2 className="section-title mt-5">
-            Five steps to a more <span className="gradient-text">productive you</span>
+            Five phases to <span className="gradient-text">exam day</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-fg/60">
             Follow the road from foundations to the finish line. Tick off each phase as you go -
@@ -107,6 +107,11 @@ export function RoadMap() {
                 style={{ width: `${phasePct}%` }}
               />
             </div>
+            {storageError && (
+              <p role="alert" className="mt-3 text-left text-xs text-red-700 dark:text-red-300">
+                {storageError}
+              </p>
+            )}
           </div>
         </header>
       </div>

@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X, Download, Check, ExternalLink, FileText, Eye, MonitorSmartphone } from 'lucide-react';
 import type { Resource } from '@/lib/resources';
+import { reportBrokenResourceLink } from '@/lib/feedback';
 import { DocPreview, type PreviewMode } from './DocPreview';
 
 const servesStyle: Record<string, string> = {
@@ -24,38 +25,99 @@ export function PreviewModal({
   onToggle: () => void;
 }) {
   const [mode, setMode] = useState<PreviewMode>('rendered');
+  const [newTabError, setNewTabError] = useState('');
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const onCloseRef = useRef(onClose);
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   // reset the view whenever a new document opens (?view=office deep-links that tab)
   useEffect(() => {
     if (!resource) return;
     const v = new URLSearchParams(window.location.search).get('view');
     setMode(v === 'office' ? 'office' : 'rendered');
+    setNewTabError('');
   }, [resource]);
 
-  // lock page scroll + Esc to close while open
+  // Keep keyboard focus within the modal while open and restore it on close.
   useEffect(() => {
     if (!resource) return;
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const focusable = () =>
+      Array.from(
+        dialogRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'
+        ) ?? []
+      );
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        onCloseRef.current();
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const items = focusable();
+      if (items.length === 0) {
+        e.preventDefault();
+        dialogRef.current?.focus();
+        return;
+      }
+      const first = items[0];
+      const last = items[items.length - 1];
+      const activeIndex = items.findIndex((item) => item === document.activeElement);
+      if (e.shiftKey && activeIndex <= 0) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (activeIndex === -1 || activeIndex === items.length - 1)) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
     document.addEventListener('keydown', onKey);
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = prev;
+      if (previousFocus?.isConnected) previousFocus.focus();
     };
-  }, [resource, onClose]);
+  }, [resource]);
 
   const openInNewTab = async () => {
     if (!resource) return;
+    const tab = window.open('', '_blank');
+    if (!tab) {
+      setNewTabError('Your browser blocked the new tab. Allow pop-ups or use the Office Online preview tab.');
+      return;
+    }
+    tab.opener = null;
     try {
-      const d = await fetch(`/api/view-url?id=${encodeURIComponent(resource.id)}`).then((r) => r.json());
-      window.open(
-        `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(d.url)}`,
-        '_blank',
-        'noopener'
+      const response = await fetch(`/api/view-url?id=${encodeURIComponent(resource.id)}`);
+      if (!response.ok) throw new Error(`The preview service returned HTTP ${response.status}.`);
+      const data: { url?: unknown; publiclyReachable?: unknown } = await response.json();
+      if (data.publiclyReachable === false) {
+        throw new Error('Office Online needs a publicly reachable file URL. Deploy the site or configure cloud storage.');
+      }
+      if (typeof data.url !== 'string') throw new Error('The preview service returned no file URL.');
+      const fileUrl = new URL(data.url);
+      if (fileUrl.protocol !== 'https:') throw new Error('The preview file URL must use HTTPS.');
+      tab.location.href = `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(data.url)}`;
+    } catch (error) {
+      console.error('Unable to open the Office Online preview:', error);
+      tab.close();
+      setNewTabError(
+        error instanceof Error
+          ? error.message
+          : 'The Office Online preview could not be opened. Try the rendered preview or download.'
       );
-    } catch {}
+    }
   };
+
+  const reportHref = resource ? reportBrokenResourceLink(resource.id, resource.title) : null;
 
   return (
     <AnimatePresence>
@@ -69,9 +131,11 @@ export function PreviewModal({
           <div className="absolute inset-0 bg-ink/65 backdrop-blur-sm" onClick={onClose} aria-hidden />
 
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={`${resource.title} preview`}
+            tabIndex={-1}
             initial={{ y: 40, opacity: 0, scale: 0.98 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 20, opacity: 0, scale: 0.98 }}
@@ -95,6 +159,7 @@ export function PreviewModal({
                 </div>
               </div>
               <button
+                ref={closeButtonRef}
                 onClick={onClose}
                 aria-label="Close preview"
                 className="relative grid h-9 w-9 shrink-0 place-items-center rounded-xl text-fg/50 transition hover:bg-fg/10 hover:text-fg"
@@ -125,7 +190,7 @@ export function PreviewModal({
                   <p className="mt-1 text-sm leading-relaxed text-fg/70">{resource.description}</p>
                 </div>
 
-                <div className="mt-4 flex gap-2 lg:flex-col">
+                <div className="mt-4 flex flex-wrap gap-2 lg:flex-col">
                   <a
                     href={`/api/download?id=${encodeURIComponent(resource.id)}`}
                     className="btn-primary flex-1 justify-center"
@@ -143,6 +208,24 @@ export function PreviewModal({
                     <Check className="h-4 w-4" /> {done ? 'Completed' : 'Mark done'}
                   </button>
                 </div>
+                {reportHref ? (
+                  <a
+                    href={reportHref}
+                    className="mt-3 block text-xs font-semibold text-brand-600 hover:underline"
+                  >
+                    Report broken link or wrong file
+                  </a>
+                ) : (
+                  <p className="mt-3 text-xs text-fg/45">
+                    Broken link? Use <a href="/contact" className="text-brand-600 hover:underline">Contact</a>{' '}
+                    and include resource ID <code className="text-[10px]">{resource.id}</code>.
+                  </p>
+                )}
+                {newTabError && (
+                  <p role="alert" className="mt-3 text-xs text-red-700 dark:text-red-300">
+                    {newTabError}
+                  </p>
+                )}
               </aside>
 
               {/* live preview */}

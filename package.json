@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "upload": "node scripts/upload-to-s3.mjs",
-    "manifest": "node scripts/build-manifest.mjs"
+    "manifest": "node scripts/build-manifest.mjs",
+    "validate:resources": "node scripts/validate-resources.mjs",
+    "test": "node --experimental-strip-types --test tests/site.test.mjs",
+    "check": "npm run validate:resources && npm run build && npm test"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.682.0",

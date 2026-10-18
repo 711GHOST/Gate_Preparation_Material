@@ -4,6 +4,7 @@ import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { siteName, siteUrl } from '@/lib/site-config';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -11,16 +12,29 @@ const inter = Inter({
   display: 'swap',
 });
 
+const defaultTitle = 'VektaPrep | Free GATE 2027 DA & CS Study Resources';
+const defaultDescription =
+  'Explore GATE 2027 Data Science and Computer Science study notes, formula books, practice questions, mock tests, and preparation resources on VektaPrep.';
+
 export const metadata: Metadata = {
-  title: 'VektaPrep - Your Roadmap to GATE 2027',
-  description:
-    'A guided, animated roadmap to crack GATE 2027 (DA & CS) - plan, focus, achieve. Browse and download the full study library.',
-  keywords: ['GATE 2027', 'Data Science', 'Computer Science', 'roadmap', 'study', 'DA', 'CS'],
+  metadataBase: new URL(siteUrl),
+  title: defaultTitle,
+  description: defaultDescription,
+  keywords: ['GATE 2027', 'Data Science', 'Computer Science', 'roadmap', 'study', 'DA', 'CS', 'mock tests'],
   openGraph: {
-    title: 'VektaPrep - Your Roadmap to GATE 2027',
-    description: 'An animated roadmap + a complete, downloadable GATE 2027 study library.',
+    title: defaultTitle,
+    description: defaultDescription,
     type: 'website',
+    url: siteUrl,
+    siteName,
+    locale: 'en_IN',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: defaultTitle,
+    description: defaultDescription,
+  },
+  alternates: { canonical: siteUrl },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -33,10 +47,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col">
+      <body className="flex min-h-screen flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

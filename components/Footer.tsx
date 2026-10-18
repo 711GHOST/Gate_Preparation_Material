@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { Route } from 'lucide-react';
+import { footerLegal } from '@/lib/nav-links';
+import { officialSourceLinksChecked } from '@/lib/exam-info';
+import { officialGate } from '@/lib/site-config';
 
 export function Footer() {
   return (
@@ -8,43 +11,79 @@ export function Footer() {
         <div>
           <Link href="/" className="flex items-center gap-2.5">
             <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white">
-              <Route className="h-5 w-5" />
+              <Route className="h-5 w-5" aria-hidden />
             </span>
-            <span className="text-lg font-extrabold tracking-tight text-white">
-              VektaPrep
-            </span>
+            <span className="text-lg font-extrabold tracking-tight text-white">VektaPrep</span>
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
-            A guided, animated roadmap and a complete study library for GATE 2027 -
-            Data Science &amp; AI and Computer Science. One system, endless possibilities.
+            GATE 2027 preparation resources for Data Science &amp; AI and Computer Science — notes,
+            practice documents, and a browser-based roadmap tracker.
           </p>
           <p className="mt-4 text-xs text-white/40">
-            Built for the aspirant. Syllabus verified against the official GATE 2027 (IIT Madras) sources.
+            Not affiliated with IIT Madras or the GATE organizing institute. Verify current dates and
+            rules on the{' '}
+            <a
+              href={officialGate.home}
+              className="underline hover:text-white/70"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              official GATE 2027 website
+            </a>
+            . Official source links last checked {officialSourceLinksChecked}.
           </p>
         </div>
 
         <div>
-          <h4 className="text-sm font-bold uppercase tracking-wider text-white/50">Explore</h4>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-white/50">Explore</h2>
           <ul className="mt-4 space-y-2.5 text-sm text-white/70">
-            <li><Link href="/#roadmap" className="hover:text-white">The roadmap</Link></li>
-            <li><Link href="/#features" className="hover:text-white">Why VektaPrep</Link></li>
-            <li><Link href="/resources" className="hover:text-white">Resources &amp; papers</Link></li>
+            <li>
+              <Link href="/resources" className="hover:text-white">
+                Resource library
+              </Link>
+            </li>
+            <li>
+              <Link href="/study-roadmap" className="hover:text-white">
+                Study roadmap
+              </Link>
+            </li>
+            <li>
+              <Link href="/mock-tests" className="hover:text-white">
+                Mock tests
+              </Link>
+            </li>
+            <li>
+              <Link href="/gate/da" className="hover:text-white">
+                GATE DA preparation
+              </Link>
+            </li>
+            <li>
+              <Link href="/gate/cs" className="hover:text-white">
+                GATE CS preparation
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-sm font-bold uppercase tracking-wider text-white/50">Exam</h4>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-white/50">Policies &amp; exam</h2>
           <ul className="mt-4 space-y-2.5 text-sm text-white/70">
-            <li>GATE 2027 · DA &amp; CS</li>
-            <li>Exam: 6-21 Feb 2027</li>
-            <li>Results: 19 Mar 2027</li>
+            {footerLegal.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="hover:text-white">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/40 sm:flex-row">
           <span>© {new Date().getFullYear()} VektaPrep. For educational use.</span>
-          <span>#worksmarter · #productivityOS</span>
+          <Link href="/disclaimer" className="hover:text-white/70">
+            Independent educational resource — read disclaimer
+          </Link>
         </div>
       </div>
     </footer>

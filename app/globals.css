@@ -126,6 +126,19 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal { animation: none; opacity: 1; }
+  html { scroll-behavior: auto; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* ---- Inline document preview (docx-preview) ---------------------------- */

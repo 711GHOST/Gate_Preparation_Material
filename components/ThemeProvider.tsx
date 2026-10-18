@@ -23,7 +23,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       document.documentElement.classList.toggle('dark', next === 'dark');
       try {
         localStorage.setItem('vekta.theme', next);
-      } catch {}
+      } catch (error) {
+        console.error('Unable to save the theme preference:', error);
+      }
       return next;
     });
   }, []);

@@ -21,9 +21,9 @@ const GROUPS = {
 
 // Nice titles + one-line descriptions keyed by filename.
 const META = {
-  '00_GATE2027_Syllabus_Checklist_and_Coverage_Matrix.docx': ['Syllabus, Checklist & Coverage Matrix', 'The controlling reference: official DA/CS/GA syllabus + coverage map.'],
-  'M1_Study_Roadmap.docx': ['Study Roadmap', 'Week-by-week plan from today to the February 2027 exam.'],
-  'M2_Formula_Book.docx': ['Formula Book & Math Reference', 'Every key formula from the whole library, consolidated.'],
+  '00_GATE2027_Syllabus_Checklist_and_Coverage_Matrix.docx': ['Syllabus, Checklist & Coverage Matrix', 'DA/CS syllabus checklist and resource mapping; compare with the current official PDFs.'],
+  'M1_Study_Roadmap.docx': ['Study Roadmap', 'Structured preparation plan; review dates and pacing against your start date and the current official schedule.'],
+  'M2_Formula_Book.docx': ['Formula Book & Math Reference', 'Formula references compiled from available study materials.'],
   'M3_Common_Mistakes_and_Strategy.docx': ['Common Mistakes, Traps & Strategy', 'The errors that cost marks and how to avoid them.'],
   'M4_Last_Minute_Revision_Notes.docx': ['Last-Minute Revision Notes', 'Ultra-condensed essentials for the final days.'],
   'M5_Master_Index_and_Progress_Report.docx': ['Master Index & Progress Report', 'The map of the whole library with study order.'],
@@ -45,15 +45,15 @@ const META = {
   'CS_OS_Operating_Systems.docx': ['Operating Systems', 'Processes, scheduling, deadlock, memory and files.'],
   'CS_CN_Computer_Networks.docx': ['Computer Networks', 'Layering, switching, routing, IP, TCP and the web.'],
   'GA_General_Aptitude.docx': ['General Aptitude', 'Verbal, quantitative, analytical and spatial aptitude.'],
-  'QBank_DA.docx': ['DA Question Bank', '58 original GATE-style questions across all DA subjects.'],
-  'QBank_CS.docx': ['CS Question Bank', '62 original GATE-style questions across all CS subjects.'],
-  'PYQ_DA_Guide.docx': ['DA PYQ Guide', 'Pattern analysis, official sources and pattern-matched practice.'],
-  'PYQ_CS_Guide.docx': ['CS PYQ Guide', 'Pattern analysis, official sources and pattern-matched practice.'],
-  'Mock_DA_Set1.docx': ['DA Full-Length Mock - Set 1', '65 questions · 100 marks · 3 hours, with solutions.'],
-  'Mock_DA_Set2.docx': ['DA Full-Length Mock - Set 2', '65 questions · 100 marks · 3 hours, with solutions.'],
-  'Mock_CS_Set1.docx': ['CS Full-Length Mock - Set 1', '65 questions · 100 marks · 3 hours, with solutions.'],
-  'Mock_CS_Set2.docx': ['CS Full-Length Mock - Set 2', '65 questions · 100 marks · 3 hours, with solutions.'],
-  'Mixed_Revision_Test.docx': ['Mixed Revision Test', '30-question cross-subject set over the shared foundations.'],
+  'QBank_DA.docx': ['DA Question Bank', 'Practice-question document for DA preparation; count and source status not independently verified.'],
+  'QBank_CS.docx': ['CS Question Bank', 'Practice-question document for CS preparation; count and source status not independently verified.'],
+  'PYQ_DA_Guide.docx': ['DA PYQ Guide', 'Previous-year-question reference and practice guide; verify sources and dates in the document.'],
+  'PYQ_CS_Guide.docx': ['CS PYQ Guide', 'Previous-year-question reference and practice guide; verify sources and dates in the document.'],
+  'Mock_DA_Set1.docx': ['DA Full-Length Mock - Set 1', 'Downloadable DA mock document; verify its format and answer material in the file.'],
+  'Mock_DA_Set2.docx': ['DA Full-Length Mock - Set 2', 'Downloadable DA mock document; verify its format and answer material in the file.'],
+  'Mock_CS_Set1.docx': ['CS Full-Length Mock - Set 1', 'Downloadable CS mock document; verify its format and answer material in the file.'],
+  'Mock_CS_Set2.docx': ['CS Full-Length Mock - Set 2', 'Downloadable CS mock document; verify its format and answer material in the file.'],
+  'Mixed_Revision_Test.docx': ['Mixed Revision Test', 'Mixed-topic practice document; question count and contents not independently verified.'],
 };
 
 function prettify(name) {
