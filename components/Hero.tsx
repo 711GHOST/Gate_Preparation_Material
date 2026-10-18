@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, BookOpen, Map, ClipboardCheck, ChevronDown } from 'lucide-react';
+import { BookOpen, Map, ClipboardCheck, ChevronDown } from 'lucide-react';
 import { homeStats } from '@/lib/catalog-stats';
 
 const fade = {

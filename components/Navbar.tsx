@@ -91,14 +91,15 @@ export function Navbar() {
               <Link
                 key={l.href}
                 href={l.href}
+                aria-label={l.label}
                 aria-current={active ? 'page' : undefined}
-                className={`rounded-full px-3 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${
+                className={`whitespace-nowrap rounded-full px-2 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 xl:px-3 ${
                   active
                     ? 'bg-brand-50 text-brand-700 dark:bg-brand-500/15 dark:text-brand-200'
                     : 'text-fg/70 hover:bg-fg/5 hover:text-fg'
                 }`}
               >
-                {l.label}
+                {l.shortLabel ?? l.label}
               </Link>
             );
           })}
