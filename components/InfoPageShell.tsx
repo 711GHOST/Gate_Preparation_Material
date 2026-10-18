@@ -6,10 +6,12 @@ export function InfoPageShell({
   lede,
   children,
   breadcrumb,
+  wideContent = false,
 }: {
   title: string;
   lede?: string;
   breadcrumb?: { label: string; href: string }[];
+  wideContent?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -32,7 +34,7 @@ export function InfoPageShell({
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">{title}</h1>
         {lede && <p className="mt-4 text-lg leading-relaxed text-fg/65">{lede}</p>}
       </header>
-      <div className="mt-10 max-w-3xl space-y-4 text-base leading-relaxed text-fg/75 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-extrabold [&_h2]:text-fg [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-fg [&_a]:font-semibold [&_a]:text-brand-600 [&_a]:underline-offset-2 hover:[&_a]:underline [&_li]:ml-5 [&_li]:list-disc [&_ul]:space-y-2">
+      <div className={`mt-10 space-y-4 text-base leading-relaxed text-fg/75 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-extrabold [&_h2]:text-fg [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-fg [&_a]:font-semibold [&_a]:text-brand-600 [&_a]:underline-offset-2 hover:[&_a]:underline [&_li]:ml-5 [&_li]:list-disc [&_ul]:space-y-2 ${wideContent ? 'max-w-none' : 'max-w-3xl'}`}>
         {children}
       </div>
     </article>

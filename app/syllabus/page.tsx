@@ -17,9 +17,10 @@ export default function SyllabusPage() {
     <InfoPageShell
       title="Syllabus coverage"
       lede="Map official GATE topics to available VektaPrep materials. This is not a substitute for the official syllabus PDF."
+      wideContent
       breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Syllabus', href: '/syllabus' }]}
     >
-      <p>
+      <p className="max-w-3xl">
         Official syllabi:{' '}
         <a href={officialGate.papersAndSyllabus} target="_blank" rel="noopener noreferrer">
           GATE 2027 test papers &amp; syllabus
@@ -36,7 +37,7 @@ export default function SyllabusPage() {
         not independent confirmation of exam dates or marking rules. Topic mapping last updated{' '}
         {syllabusLastMapped}.
       </p>
-      <p>
+      <p className="max-w-3xl">
         For detailed checklists, download{' '}
         <a href="/resources?doc=00_GATE2027_Syllabus_Checklist_and_Coverage_Matrix">
           Syllabus, Checklist &amp; Coverage Matrix

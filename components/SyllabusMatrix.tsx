@@ -34,7 +34,7 @@ export function SyllabusMatrix() {
   }, [paper]);
 
   return (
-    <div className="mt-10 max-w-5xl">
+    <div className="mt-10 w-full min-w-0">
       <p className="text-sm text-fg/55">
         Platform coverage is inferred from available notes and practice documents. Mark{' '}
         <strong>Revision completed</strong> for your own tracking - saved in this browser only.
@@ -58,15 +58,30 @@ export function SyllabusMatrix() {
           </button>
         ))}
       </div>
-      <div className="mt-6 overflow-x-auto rounded-2xl border border-fg/10">
-        <table className="min-w-full text-left text-sm">
+      <div
+        className="mt-6 w-full overflow-x-auto rounded-2xl border border-fg/10"
+        role="region"
+        aria-label="Syllabus coverage table; scroll horizontally to view all columns"
+        tabIndex={0}
+      >
+        <table className="w-full min-w-[960px] table-fixed text-left text-sm">
+          <caption className="sr-only">
+            Mapped GATE syllabus topics, VektaPrep coverage, revision progress, and related materials
+          </caption>
+          <colgroup>
+            <col className="w-[24%]" />
+            <col className="w-[8%]" />
+            <col className="w-[24%]" />
+            <col className="w-[17%]" />
+            <col className="w-[27%]" />
+          </colgroup>
           <thead className="bg-fg/[0.04] text-xs uppercase tracking-wide text-fg/45">
             <tr>
-              <th className="px-4 py-3 font-bold">Topic</th>
-              <th className="px-4 py-3 font-bold">Paper</th>
-              <th className="px-4 py-3 font-bold">VektaPrep coverage</th>
-              <th className="px-4 py-3 font-bold">Your revision</th>
-              <th className="px-4 py-3 font-bold">Materials</th>
+              <th scope="col" className="px-4 py-3 font-bold">Topic</th>
+              <th scope="col" className="px-4 py-3 font-bold">Paper</th>
+              <th scope="col" className="px-4 py-3 font-bold">VektaPrep coverage</th>
+              <th scope="col" className="px-4 py-3 font-bold">Your revision</th>
+              <th scope="col" className="px-4 py-3 font-bold">Materials</th>
             </tr>
           </thead>
           <tbody>
@@ -78,17 +93,17 @@ export function SyllabusMatrix() {
                     <div className="font-semibold text-fg">{t.title}</div>
                     <div className="text-xs text-fg/45">{t.section}</div>
                   </td>
-                  <td className="px-4 py-3 text-fg/70">{t.paper}</td>
-                  <td className="px-4 py-3">
-                    <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass[t.status]}`}>
+                  <td className="whitespace-nowrap px-4 py-3 text-fg/70">{t.paper}</td>
+                  <td className="px-4 py-3 align-middle">
+                    <span className={`inline-flex max-w-full rounded-full px-2.5 py-1 text-xs font-semibold leading-snug ${statusClass[t.status]}`}>
                       {statusLabel[t.status]}
                     </span>
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-3 align-middle">
                     <button
                       type="button"
                       onClick={() => toggle(t.id)}
-                      className={`rounded-full border px-3 py-1 text-xs font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${
+                      className={`whitespace-nowrap rounded-full border px-3 py-1 text-xs font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${
                         userDone
                           ? 'border-emerald-400 bg-emerald-500 text-white'
                           : 'border-fg/20 text-fg/60 hover:border-emerald-400'
@@ -98,12 +113,12 @@ export function SyllabusMatrix() {
                     </button>
                   </td>
                   <td className="px-4 py-3">
-                    <ul className="flex flex-wrap gap-1">
+                    <ul className="space-y-2">
                       {t.resourceIds.slice(0, 3).map((id) => (
-                        <li key={id}>
+                        <li key={id} className="break-words">
                           <Link
                             href={`/resources?doc=${encodeURIComponent(id)}`}
-                            className="text-xs font-semibold text-brand-600 hover:underline"
+                            className="text-xs font-semibold text-brand-600 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
                           >
                             {id.replace(/_/g, ' ')}
                           </Link>
