@@ -16,7 +16,7 @@ export function Footer() {
             <span className="text-lg font-extrabold tracking-tight text-white">VektaPrep</span>
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
-            GATE 2027 preparation resources for Data Science &amp; AI and Computer Science — notes,
+            GATE 2027 preparation resources for Data Science &amp; AI and Computer Science - notes,
             practice documents, and a browser-based roadmap tracker.
           </p>
           <p className="mt-4 text-xs text-white/40">
@@ -82,7 +82,7 @@ export function Footer() {
         <div className="container-x flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/40 sm:flex-row">
           <span>© {new Date().getFullYear()} VektaPrep. For educational use.</span>
           <Link href="/disclaimer" className="hover:text-white/70">
-            Independent educational resource — read disclaimer
+            Independent educational resource - read disclaimer
           </Link>
         </div>
       </div>

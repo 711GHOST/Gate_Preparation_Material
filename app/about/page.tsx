@@ -35,7 +35,7 @@ export default function AboutPage() {
       <ul>
         <li>Start with the <Link href="/study-roadmap">study roadmap</Link> to understand phase order.</li>
         <li>Browse or search the <Link href="/resources">resource library</Link> and download notes locally.</li>
-        <li>Use question banks and mocks as timed practice — they are provided as documents, not live online exams.</li>
+        <li>Use question banks and mocks as timed practice - they are provided as documents, not live online exams.</li>
         <li>Track document and phase completion in your browser; progress is stored on this device only.</li>
         <li>Cross-check dates, eligibility, and rules on the official GATE website.</li>
       </ul>

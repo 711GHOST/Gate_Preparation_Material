@@ -37,7 +37,7 @@ export function SyllabusMatrix() {
     <div className="mt-10 max-w-5xl">
       <p className="text-sm text-fg/55">
         Platform coverage is inferred from available notes and practice documents. Mark{' '}
-        <strong>Revision completed</strong> for your own tracking — saved in this browser only.
+        <strong>Revision completed</strong> for your own tracking - saved in this browser only.
       </p>
       {storageError && (
         <p role="alert" className="mt-3 text-sm text-red-700 dark:text-red-300">
@@ -121,7 +121,7 @@ export function SyllabusMatrix() {
         </table>
       </div>
       <p className="mt-3 text-xs text-fg/45">
-        Showing {rows.length} mapped topics. Full official syllabi may list additional sub-topics —
+        Showing {rows.length} mapped topics. Full official syllabi may list additional sub-topics -
         use the syllabus checklist document in the library for detail.
       </p>
     </div>

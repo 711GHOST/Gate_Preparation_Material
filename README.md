@@ -11,12 +11,12 @@ deployed to Vercel or compatible Next.js hosting; configure the production origi
 details as needed.
 
 ### Features
-- **Animated winding roadmap** — the road draws on scroll, a marker travels along it, milestone cards reveal.
-- **Dark mode** — sun/moon toggle in the navbar; choice is saved (localStorage) and respects the OS preference on first visit. No flash on load. Deep-link a theme with `?theme=dark` or `?theme=light`.
-- **Progress tracker** — tick off the 5 roadmap phases (nodes turn into ✓, with a progress bar) and mark any of the 33 resources as completed (per-group counts + an overall progress bar). All saved locally per device; a reset button clears it.
-- **Per-document preview** — click any resource (or its “Preview” button) for a modal with details, a rendered DOCX preview, Download, mark-complete, and an optional Office Online preview. Deep-link a preview with `?doc=<id>`.
-- **Actionable roadmap** — every milestone has an “Explore materials →” link that jumps to that phase’s documents on the Resources page.
-- **Resources browser** — search + filter (DA / CS / Both), grouped by subject, downloads via S3 presigned URLs or static fallback.
+- **Animated winding roadmap** - the road draws on scroll, a marker travels along it, milestone cards reveal.
+- **Dark mode** - sun/moon toggle in the navbar; choice is saved (localStorage) and respects the OS preference on first visit. No flash on load. Deep-link a theme with `?theme=dark` or `?theme=light`.
+- **Progress tracker** - tick off the 5 roadmap phases (nodes turn into ✓, with a progress bar) and mark any of the 33 resources as completed (per-group counts + an overall progress bar). All saved locally per device; a reset button clears it.
+- **Per-document preview** - click any resource (or its “Preview” button) for a modal with details, a rendered DOCX preview, Download, mark-complete, and an optional Office Online preview. Deep-link a preview with `?doc=<id>`.
+- **Actionable roadmap** - every milestone has an “Explore materials →” link that jumps to that phase’s documents on the Resources page.
+- **Resources browser** - search + filter (DA / CS / Both), grouped by subject, downloads via S3 presigned URLs or static fallback.
 
 Question counts, page totals, answer keys, and exhaustive syllabus coverage have not been independently verified. Mock tests are downloadable documents, not interactive online exams. Progress is stored in this browser only. See `RESOURCE_AUDIT.md`, `GATE_SYLLABUS_AUDIT.md`, and `PRE_LAUNCH_CHECKLIST.md` before public promotion.
 

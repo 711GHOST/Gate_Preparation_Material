@@ -35,7 +35,7 @@ These figures were **not independently recounted from the DOCX contents**. There
 
 Automated check performed:
 
-- `npm run validate:resources` — **passed** for local file presence (33/33). The validator also checks duplicate resource IDs and would fail if it found any; no duplicate-ID error was reported.
+- `npm run validate:resources` - **passed** for local file presence (33/33). The validator also checks duplicate resource IDs and would fail if it found any; no duplicate-ID error was reported.
 
 Not tested or not covered by that script:
 

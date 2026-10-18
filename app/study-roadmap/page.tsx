@@ -19,7 +19,7 @@ export default function StudyRoadmapPage() {
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-fg/60">
           Five phases from shared foundations through paper-specific depth, practice, mocks, and revision.
-          Tick phases as you complete them — progress is stored locally on this device. For a printable
+          Tick phases as you complete them - progress is stored locally on this device. For a printable
           week-by-week plan, download the{' '}
           <Link href="/resources?doc=M1_Study_Roadmap" className="font-semibold text-brand-600">
             Study Roadmap

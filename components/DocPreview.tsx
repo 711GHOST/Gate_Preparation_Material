@@ -115,7 +115,7 @@ function OfficePreview({ resource }: { resource: Resource }) {
   if (!src) return <Status icon="spin" text="Preparing Office Online viewer…" />;
   return (
     <iframe
-      title={`${resource.title} — Office Online preview`}
+      title={`${resource.title} - Office Online preview`}
       src={src}
       className="h-full w-full rounded-2xl border-0 bg-white"
       allow="fullscreen"

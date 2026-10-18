@@ -38,7 +38,7 @@ export default function PrivacyPage() {
         </li>
         <li>
           <strong>Contact messages:</strong> if you use the contact flow with a configured email
-          address, your message is composed in your email client — we do not receive it unless you send
+          address, your message is composed in your email client - we do not receive it unless you send
           it.
         </li>
         <li>
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
       <p>
         Document downloads may be served from this site or, when configured, from private cloud storage
         via short-lived signed URLs. Optional &quot;Office Online&quot; preview opens Microsoft&apos;s
-        viewer with a public URL to your file — review{' '}
+        viewer with a public URL to your file - review{' '}
         <a href="https://privacy.microsoft.com/" target="_blank" rel="noopener noreferrer">
           Microsoft&apos;s privacy statement
         </a>{' '}

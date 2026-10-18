@@ -33,7 +33,7 @@ const features = [
   {
     icon: ShieldCheck,
     title: 'Transparent',
-    body: 'Syllabus links point to official IIT Madras sources. Coverage maps show which topics have notes or practice — not every official sub-topic is guaranteed.',
+    body: 'Syllabus links point to official IIT Madras sources. Coverage maps show which topics have notes or practice - not every official sub-topic is guaranteed.',
     color: '#34d399',
   },
 ];

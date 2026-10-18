@@ -17,14 +17,14 @@
 
 ## Automated checks actually completed
 
-- [x] `npm run validate:resources` — passed; manifest listed 33 resources and all 33 bundled files were found.
-- [x] `npm run check` — passed resource validation, production build, and all five tests.
-- [x] `npx tsc --noEmit` — passed.
-- [ ] Lint — not configured for non-interactive execution; `npm run lint` prompts to create an ESLint configuration, and the production build skips linting.
+- [x] `npm run validate:resources` - passed; manifest listed 33 resources and all 33 bundled files were found.
+- [x] `npm run check` - passed resource validation, production build, and all five tests.
+- [x] `npx tsc --noEmit` - passed.
+- [ ] Lint - not configured for non-interactive execution; `npm run lint` prompts to create an ESLint configuration, and the production build skips linting.
 - [ ] Verify the `/resources` browser-tab title after client-side navigation; integrated browser testing observed a duplicate brand suffix, while direct page load is correct.
 - [ ] Verify the actual S3-backed download and preview paths in a browser with access to the configured bucket. The integrated browser could not complete the external S3 request.
-- [ ] Full accessibility automation, deployed browser checks, and physical-device viewport tests — not run.
-- [ ] Lighthouse/Core Web Vitals measurement — not run; no performance score is claimed.
+- [ ] Full accessibility automation, deployed browser checks, and physical-device viewport tests - not run.
+- [ ] Lighthouse/Core Web Vitals measurement - not run; no performance score is claimed.
 
 ## Must be manually verified before public promotion
 

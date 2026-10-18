@@ -47,7 +47,7 @@ export async function presignDownload(key: string, filename?: string): Promise<s
   return getSignedUrl(client(), cmd, { expiresIn: 60 * 10 }); // 10 minutes
 }
 
-/** Presigned GET URL for viewing inline (no attachment disposition) — fed to the Office Online viewer. */
+/** Presigned GET URL for viewing inline (no attachment disposition) - fed to the Office Online viewer. */
 export async function presignView(key: string): Promise<string> {
   const cmd = new GetObjectCommand({
     Bucket: S3_BUCKET,

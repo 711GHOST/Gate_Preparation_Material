@@ -18,7 +18,7 @@ const labels: Record<FeedbackCategory, string> = {
 /** Builds a mailto URL using the public owner address or its environment override. */
 export function buildFeedbackMailto(category: FeedbackCategory, body: string, resourceId?: string) {
   if (!contactEmail) return null;
-  const subject = `[VektaPrep] ${labels[category]}${resourceId ? ` — ${resourceId}` : ''}`;
+  const subject = `[VektaPrep] ${labels[category]}${resourceId ? ` - ${resourceId}` : ''}`;
   const params = new URLSearchParams();
   params.set('subject', subject);
   params.set('body', body.trim());
