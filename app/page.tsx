@@ -99,7 +99,7 @@ export default function Home() {
                 mocks - grouped by subject and searchable. Served securely from cloud storage.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="/resources" className="btn bg-white text-fg hover:bg-white/90">
+                <Link href="/resources" className="btn bg-white text-ink hover:bg-white/90">
                   Browse resources <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
