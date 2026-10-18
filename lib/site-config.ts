@@ -6,8 +6,14 @@ export const siteName = 'VektaPrep';
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://gate-prep-five.vercel.app';
 
-/** Optional owner contact email (mailto links). Not invented when unset. */
-export const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || '';
+export const founder = {
+  name: 'Shwetanshu Sood',
+  email: 'shwetanshusood9102001@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/shwetanshu-sood/',
+} as const;
+
+/** Owner contact email; deployments may override the public default. */
+export const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || founder.email;
 
 export const officialGate = {
   home: 'https://gate2027.iitm.ac.in/',

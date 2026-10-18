@@ -106,14 +106,8 @@ export default function PrivacyPage() {
       <h2>Contact</h2>
       <p>
         Privacy questions:{' '}
-        {contactEmail ? (
-          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-        ) : (
-          <>
-            configure <code>NEXT_PUBLIC_CONTACT_EMAIL</code> for a published address, or use the{' '}
-            <Link href="/contact">contact page</Link> instructions.
-          </>
-        )}
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. You can also use the{' '}
+        <Link href="/contact">contact page</Link>.
       </p>
     </InfoPageShell>
   );

@@ -204,7 +204,7 @@ function ResourceCard({
   return (
     <div
       style={{ animationDelay: `${Math.min(index * 0.05, 0.5)}s` }}
-      className={`reveal card group flex flex-col p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow ${
+      className={`reveal card card-interactive group flex flex-col p-5 ${
         done ? 'ring-2 ring-emerald-400/60' : ''
       }`}
     >

@@ -15,7 +15,7 @@ const labels: Record<FeedbackCategory, string> = {
   suggestion: 'General suggestion',
 };
 
-/** Builds a mailto URL when NEXT_PUBLIC_CONTACT_EMAIL is configured. */
+/** Builds a mailto URL using the public owner address or its environment override. */
 export function buildFeedbackMailto(category: FeedbackCategory, body: string, resourceId?: string) {
   if (!contactEmail) return null;
   const subject = `[VektaPrep] ${labels[category]}${resourceId ? ` — ${resourceId}` : ''}`;

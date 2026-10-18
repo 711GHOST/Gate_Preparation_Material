@@ -84,19 +84,19 @@ function ResourceBlock({ heading, items }: { heading: string; items: Resource[] 
   return (
     <div>
       <h2 className="text-2xl font-extrabold text-fg">{heading}</h2>
-      <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+      <ul className="mt-4 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((r) => (
-          <li key={r.id} className="card flex flex-col gap-2 p-4">
+          <li key={r.id} className="card card-interactive group flex h-full flex-col gap-2 p-5">
             <div className="flex items-start gap-3">
               <FileText className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" aria-hidden />
               <div className="min-w-0">
-                <Link href={`/resources?doc=${encodeURIComponent(r.id)}`} className="font-bold text-fg hover:text-brand-600">
+                <Link href={`/resources?doc=${encodeURIComponent(r.id)}`} className="font-bold text-fg transition-colors group-hover:text-brand-600 hover:text-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
                   {r.title}
                 </Link>
                 <p className="mt-1 text-sm text-fg/55">{r.description}</p>
               </div>
             </div>
-            <a href={`/api/download?id=${encodeURIComponent(r.id)}`} className="btn-primary mt-2 w-fit px-4 py-2 text-xs">
+            <a href={`/api/download?id=${encodeURIComponent(r.id)}`} className="btn-primary mt-auto w-fit px-4 py-2 text-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
               <Download className="h-3.5 w-3.5" /> Download
             </a>
           </li>

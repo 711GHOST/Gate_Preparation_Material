@@ -38,27 +38,29 @@ export default function MockTestsPage() {
         </div>
       </section>
 
-      <section className="container-x grid gap-4 py-12 sm:grid-cols-2">
+      <section className="container-x grid gap-4 py-12 sm:grid-cols-2 lg:grid-cols-3">
         {mockIds.map((r) => (
-          <article key={r.id} className="card flex flex-col p-6">
+          <article key={r.id} className="card card-interactive group flex h-full flex-col p-5">
             <div className="flex items-start gap-3">
-              <FileText className="h-6 w-6 text-brand-600" aria-hidden />
-              <div>
-                <h2 className="text-lg font-extrabold text-fg">{r.title}</h2>
+              <FileText className="mt-0.5 h-6 w-6 shrink-0 text-brand-600" aria-hidden />
+              <div className="min-w-0">
+                <h2 className="text-lg font-extrabold text-fg transition-colors group-hover:text-brand-600">
+                  {r.title}
+                </h2>
                 <p className="mt-1 text-sm text-fg/55">{r.description}</p>
                 <p className="mt-2 text-xs font-semibold text-fg/45">Serves: {r.serves}</p>
               </div>
             </div>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-auto flex flex-wrap gap-2 pt-5">
               <Link
                 href={`/resources?doc=${encodeURIComponent(r.id)}`}
-                className="btn-ghost border border-fg/15 px-4 py-2 text-xs"
+                className="btn-ghost border border-fg/15 px-4 py-2 text-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
               >
                 Preview
               </Link>
               <a
                 href={`/api/download?id=${encodeURIComponent(r.id)}`}
-                className="btn-primary px-4 py-2 text-xs"
+                className="btn-primary px-4 py-2 text-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
               >
                 <Download className="h-4 w-4" /> Download
               </a>

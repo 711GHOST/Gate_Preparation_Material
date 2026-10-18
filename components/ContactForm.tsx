@@ -52,7 +52,7 @@ export function ContactForm() {
 
   if (!contactEmail) {
     return (
-      <div className="card max-w-2xl space-y-4 p-6">
+      <div className="card w-full space-y-4 p-5 sm:p-6">
         <p className="text-sm leading-relaxed text-fg/70">
           A public contact email is not configured yet. To enable one-click feedback, set{' '}
           <code className="rounded bg-fg/5 px-1.5 py-0.5 text-xs">NEXT_PUBLIC_CONTACT_EMAIL</code>{' '}
@@ -67,7 +67,7 @@ export function ContactForm() {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as FeedbackCategory)}
-            className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm dark:bg-ink/50"
+            className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm transition focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/15 dark:bg-ink/50"
           >
             {categories.map((c) => (
               <option key={c.id} value={c.id}>
@@ -82,7 +82,7 @@ export function ContactForm() {
             value={resourceId}
             onChange={(e) => setResourceId(e.target.value)}
             placeholder="e.g. Mock_DA_Set1"
-            className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm dark:bg-ink/50"
+            className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm transition focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/15 dark:bg-ink/50"
           />
         </label>
         <label className="block text-sm font-semibold text-fg">
@@ -91,11 +91,11 @@ export function ContactForm() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             rows={5}
-            className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm dark:bg-ink/50"
+            className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm transition focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/15 dark:bg-ink/50"
             placeholder="Describe the issue or suggestion…"
           />
         </label>
-        <button type="button" onClick={copyTemplate} className="btn-ghost border border-fg/15">
+        <button type="button" onClick={copyTemplate} className="btn-ghost border border-fg/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
           {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
           {copied ? 'Copied' : 'Copy message template'}
         </button>
@@ -111,7 +111,7 @@ export function ContactForm() {
 
   return (
     <form
-      className="card max-w-2xl space-y-4 p-6"
+      className="card w-full space-y-4 p-5 sm:p-6"
       onSubmit={(e) => {
         e.preventDefault();
         if (mailto) window.location.href = mailto;
@@ -126,7 +126,7 @@ export function ContactForm() {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value as FeedbackCategory)}
-          className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm dark:bg-ink/50"
+          className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm transition focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/15 dark:bg-ink/50"
         >
           {categories.map((c) => (
             <option key={c.id} value={c.id}>
@@ -140,7 +140,7 @@ export function ContactForm() {
         <input
           value={resourceId}
           onChange={(e) => setResourceId(e.target.value)}
-          className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm dark:bg-ink/50"
+          className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm transition focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/15 dark:bg-ink/50"
         />
       </label>
       <label className="block text-sm font-semibold text-fg">
@@ -150,7 +150,7 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           rows={5}
-          className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm dark:bg-ink/50"
+          className="mt-1.5 w-full rounded-xl border border-fg/15 bg-white px-3 py-2.5 text-sm transition focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/15 dark:bg-ink/50"
         />
       </label>
       <button type="submit" className="btn-primary">

@@ -62,7 +62,7 @@ export default function Home() {
             {features.map((f) => (
               <div
                 key={f.title}
-                className="card group relative overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow"
+                className="card card-interactive group relative overflow-hidden p-6"
               >
                 <span
                   className="grid h-12 w-12 place-items-center rounded-2xl text-white"

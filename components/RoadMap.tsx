@@ -281,7 +281,7 @@ function MilestoneCard({
   onToggle: () => void;
 }) {
   return (
-    <div className={`card p-5 sm:p-6 ${done ? 'ring-2 ring-emerald-400/60' : ''}`}>
+    <div className={`card card-interactive p-5 sm:p-6 ${done ? 'ring-2 ring-emerald-400/60' : ''}`}>
       <div className="flex items-center gap-3">
         <span
           className="grid h-11 w-11 place-items-center rounded-xl text-white"
